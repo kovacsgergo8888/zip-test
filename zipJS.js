@@ -10,7 +10,6 @@ archive.pipe(output)
 
 async function appendFile (file, archive) {
   return new Promise(resolve => {
-    console.log('start append '+file);
     const content = fs.readFileSync(`./files/${file}`)
     archive.append(content, { name: file })
     resolve()
@@ -23,11 +22,12 @@ files.forEach(file => {
   appends.push(appendFile(file, archive))
 })
 
-Promise.all(appends).then(() => {
+async function run () {
+  await Promise.all(appends)
   archive.finalize()
-})
+}
 
-
+run()
 
 // const fs = require('fs')
 // const JSZip = require('jszip');
