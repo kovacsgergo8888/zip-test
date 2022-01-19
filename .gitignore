@@ -1,0 +1,7 @@
+/node_modules/
+archiver.zip
+jszip.zip
+php.zip
+/files/*
+!/files/.gitkeep
+.DS_store
